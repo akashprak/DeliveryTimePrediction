@@ -1,0 +1,6 @@
+pandas
+seaborn
+Flask
+numpy
+scikit-learn
+geopy
