@@ -83,7 +83,7 @@ class DataTransformation:
             numerical_columns = ['Delivery_person_Age', 'Delivery_person_Ratings', "Restaurant_latitude", "Restaurant_longitude",
                                  "Delivery_location_latitude", "Delivery_location_longitude", 'Time_Order_picked']
             categorical_columns = ['Weather_conditions', 'Road_traffic_density', 'Vehicle_condition', 'Type_of_vehicle',
-                                   'multiple_deliveries',	'Festival', 'City']
+                                   'multiple_deliveries', 'Festival', 'City']
             id_column = ['Delivery_person_ID']
             
             logging.info('Pipeline Initiated')

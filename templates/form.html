@@ -1,0 +1,121 @@
+{% extends 'base.html' %}
+
+{% block title %} Expected Delivery Time {% endblock %}
+
+{% block body %}
+
+<form action="{{url_for('predict')}}" method="POST">
+
+    <div class="form-group">
+        <label for="ID">Delivery person ID:</label>
+        <input type="text" id="ID" name="Delivery_person_ID" placeholder="Enter delivery person ID">
+    </div>
+
+    <div class="form-group">
+        <label for="ID">Delivery person Age:</label>
+        <input type="text" id="Age" name="Delivery_person_Age" placeholder="Enter delivery person Age (int)">
+    </div>
+
+    <div class="form-group">
+        <label for="rating">Delivery person Rating:</label>
+        <input type="text" id="rating" name="Delivery_person_Ratings" placeholder="Enter rating (float)">
+    </div>
+
+    <div class="form-group">  
+        <label for="Restaurant_latitude">Restaurant latitude:</label>
+        <input type="text" id="Restaurant_latitude" name="Restaurant_latitude" placeholder="Enter latitude value">
+    </div>
+    
+    <div class="form-group">  
+        <label for="Restaurant_longiitude">Restaurant longiitude:</label>
+        <input type="text" id="Restaurant_longitude" name="Restaurant_longitude" placeholder="Enter longitude value">
+    </div>
+
+    <div class="form-group">  
+        <label for="Delivery_location_latitude">Delivery location latitude:</label>
+        <input type="text" id="Delivery_location_latitude" name="Delivery_location_latitude" placeholder="Enter latitude value">
+    </div>
+
+    <div class="form-group">  
+        <label for="Restaurant_latitude">Delivery location longiitude:</label>
+        <input type="text" id="Delivery_location_longitude" name="Delivery_location_longitude" placeholder="Enter longitude value">
+    </div>
+    <div class="form-group">  
+        <label for="time">Time order picked:</label>
+        <input type="text" id="time" name="Time_Order_picked" placeholder="Enter time order picked (hour)">
+    </div>         
+  
+  <div class="form-group">
+    <label for="weather">Weather Condition:</label>
+    <select id="weather" name="Weather_conditions">
+      <option value="Sunny">Sunny</option>
+      <option value="Windy">Windy</option>
+      <option value="Sandstorms">Sandstorms</option>
+      <option value="Stormy">Stormy</option>
+      <option value="Cloudy">Cloudy</option>
+      <option value="Fog">Fog</option>
+    </select>
+  </div>
+    
+  <div class="form-group">
+    <label for="traffic">Road traffic density:</label>
+    <select id="traffic" name="Road_traffic_density">
+      <option value="Low">Low</option>
+      <option value="Medium">Medium</option>
+      <option value="High">High</option>
+      <option value="Jam">Jam</option>
+    </select>
+  </div>
+
+  <div class="form-group">
+    <label for="Vehicle_condition">Vehicle condition:</label>
+    <select id="Vehicle_condition" name="Vehicle_condition">
+      <option value="0">0</option>
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+    </select>
+  </div>
+
+  <div class="form-group">
+    <label for="Type_of_vehicle">Type of vehicle:</label>
+    <select id="Type_of_vehicle" name="Type_of_vehicle">
+      <option value="scooter">Scooter</option>
+      <option value="electric_scooter">Electric Scooter</option>
+      <option value="bicycle">Bicycle</option>
+      <option value="motorcycle">Motorcycle</option>
+    </select>
+  </div>
+
+  <div class="form-group">
+    <label for="multiple_deliveries">Multiple deliveries:</label>
+    <select id="multiple_deliveries" name="multiple_deliveries">
+      <option value="0">0</option>
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3 or more</option>
+    </select>
+  </div>
+
+  <div class="form-group">
+    <label for="Festival">Festival:</label>
+    <select id="Festival" name="Festival">
+      <option value="No">NO</option>
+      <option value="Yes">YES</option>
+    </select>
+  </div>
+
+  <div class="form-group">
+    <label for="City">City type:</label>
+    <select id="City" name="City">
+      <option value="urban">Urban</option>
+      <option value="Semi-Urban">Semi-Urban</option>
+      <option value="Metropolitian">Metropolitian</option>
+    </select>
+  </div>
+
+  <div style="clear:both;"></div>
+    <input type="submit" value="Submit">
+  </form>
+
+{% endblock %}
