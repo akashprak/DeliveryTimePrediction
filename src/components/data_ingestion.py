@@ -22,6 +22,8 @@ class DataIngestion:
         try:
             df=pd.read_csv(os.path.join('data','cleaned_dataset.csv'))
             logging.info('Dataset read as pandas Dataframe')
+
+            os.makedirs(os.path.dirname(self.ingestion_config.train_data_path),exist_ok=True)
             logging.info('Train test split')
             train_set,test_set = train_test_split(df, test_size=0.30, random_state=2)
             train_set.to_csv(self.ingestion_config.train_data_path, index=False)

@@ -40,7 +40,7 @@ class _timeDist_transform:
             df["Distance"] = df.apply(self._geo, axis=1) 
             df = df.drop(columns=self.coordinates)
 
-            logging.info("Convert feature to datetime format and extract 'hour' part")
+            logging.info("Converting feature to datetime format and extract 'hour' part")
             df['Time_Order_picked'] = pd.to_datetime(df['Time_Order_picked'], errors='coerce', format='%H:%M').dt.hour
             return df
         except Exception as e:
@@ -151,7 +151,7 @@ class DataTransformation:
             
             # Data transformation using preprocessor
             logging.info("Applying preprocessor object on training and testing datasets.")
-            X_train_arr = preprocessing_obj.fit_transform(input_feature_train_df)
+            X_train_arr = preprocessing_obj.fit_transform(input_feature_train_df, y=target_feature_train_df)
             X_test_arr = preprocessing_obj.transform(input_feature_test_df)
 
             y_train_arr = np.array(target_feature_train_df)
