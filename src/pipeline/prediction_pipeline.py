@@ -2,7 +2,7 @@ import os
 import pandas as pd
 from src.exception import CustomException
 from src.logger import logging
-from src.utils import load_object
+from src.utils import load_object, geo
 
 class CustomData:
     _numeric_features = ['Delivery_person_Age', 'Delivery_person_Ratings', "Restaurant_latitude", "Restaurant_longitude",
@@ -34,7 +34,8 @@ class PredictPipeline:
         try:
             data_scaled = self.preprocessor.transform(dataframe)
             pred = self.model.predict(data_scaled)
-            return pred
+            distance = geo(dataframe.loc[0])
+            return pred[0], distance
             
         except Exception as e:
             logging.info("Exception occured in prediction")

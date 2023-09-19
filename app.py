@@ -12,9 +12,11 @@ def predict():
         data = CustomData(request.form)
         data_df = data.as_dataframe()
         predictor_obj = PredictPipeline()
-        pred = predictor_obj.predict(data_df)
-        pred=int(pred[0])
-        return render_template('result.html', results= pred)
+        pred, distance = predictor_obj.predict(data_df)
+        
+        pred=int(pred)
+        distance=round(distance,1)
+        return render_template('result.html', results= pred, distance=distance)
     
 if __name__=='__main__':
-    app.run(host='0.0.0.0', debug=True)
+    app.run(host='0.0.0.0')

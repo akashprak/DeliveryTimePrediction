@@ -1,6 +1,8 @@
 import os
 import pickle
 from sklearn.metrics import r2_score
+from geopy.distance import geodesic
+import numpy as np
 
 from src.exception import CustomException
 from src.logger import logging
@@ -48,3 +50,14 @@ def load_object(file_path):
     except Exception as e:
         logging.info('Exception Occured in load_object function utils')
         raise CustomException(e)
+
+
+def geo(sample):
+    coordinates = ["Restaurant_latitude", "Restaurant_longitude", 
+                    "Delivery_location_latitude", "Delivery_location_longitude"]
+    if sample[coordinates].notnull().all():
+        return geodesic(
+                (sample["Restaurant_latitude"], sample["Restaurant_longitude"]), 
+                (sample["Delivery_location_latitude"], sample["Delivery_location_longitude"])).km
+    else:
+        return np.nan    # passing as NaN if any coordinate is null

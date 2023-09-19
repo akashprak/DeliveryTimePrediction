@@ -2,7 +2,6 @@ import numpy as np
 import pandas as pd
 import os
 from dataclasses import dataclass
-from geopy.distance import geodesic
 
 from sklearn.compose import ColumnTransformer
 from sklearn.impute import SimpleImputer
@@ -11,7 +10,7 @@ from sklearn.preprocessing import FunctionTransformer,StandardScaler,TargetEncod
 
 from src.exception import CustomException
 from src.logger import logging
-from src.utils import save_object
+from src.utils import save_object, geo
 
 # Configurations for data transformation
 @dataclass
@@ -24,20 +23,12 @@ class DataTransformationConfig:
 class _timeDist_transform:
     coordinates = ["Restaurant_latitude", "Restaurant_longitude", 
                     "Delivery_location_latitude", "Delivery_location_longitude"]
-    
-    def _geo(self, sample):
-        if sample.notnull().all():
-            return geodesic(
-                    (sample["Restaurant_latitude"], sample["Restaurant_longitude"]), 
-                    (sample["Delivery_location_latitude"], sample["Delivery_location_longitude"])).km
-        else:
-            return np.nan    # passing as NaN if any coordinate is null
  
     def timeDist(self, df: pd.DataFrame):
         """function to convert coordinates to distance in kilometres"""
         try:
             logging.info('Converting coordinates into distance')
-            df["Distance"] = df.apply(self._geo, axis=1) 
+            df["Distance"] = df.apply(geo, axis=1) 
             df = df.drop(columns=self.coordinates)
 
             logging.info("Converting feature to datetime format and extract 'hour' part")
