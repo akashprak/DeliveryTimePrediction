@@ -38,7 +38,7 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y jq unzip
       - name: Configure AWS credentials
-        uses: aws-actions/configure-aws-credentials@v1
+        uses: aws-actions/configure-aws-credentials@v4
         with:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
@@ -86,9 +86,9 @@ jobs:
         run: |
          docker pull ${{secrets.AWS_ECR_LOGIN_URI}}/${{ secrets.ECR_REPOSITORY_NAME }}:latest
          
-      #- name: Stop and remove  container if running
-       # run: |
-        # docker ps -q --filter "name=deliveryprediction" | grep -q . && docker stop deliveryprediction && docker rm -fv deliveryprediction
+      - name: Stop and remove  container if running
+        run: |
+         docker ps -q --filter "name=deliveryprediction" | grep -q . && docker stop deliveryprediction && docker rm -fv deliveryprediction
        
       - name: Run Docker Image to serve users
         run: |
