@@ -1,5 +1,7 @@
 .ebextensions/
-logs
+logs/
+notebooks/
+.gitignore
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

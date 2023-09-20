@@ -55,6 +55,7 @@ def load_object(file_path):
 def geo(sample):
     coordinates = ["Restaurant_latitude", "Restaurant_longitude", 
                     "Delivery_location_latitude", "Delivery_location_longitude"]
+    
     if sample[coordinates].notnull().all():
         return geodesic(
                 (sample["Restaurant_latitude"], sample["Restaurant_longitude"]), 
