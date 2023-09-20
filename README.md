@@ -1,7 +1,7 @@
 ## Food Delivery Time Prediction using Regression
-This is a Webapp using python which predicts the time it takes to deliver food from the time of order.
-Machine Learning techniques like Linear Regression is used to predict the target.
-The model is trained on a dataset with over 45000 samples.
+This is a Webapp using python which predicts the time it takes to deliver food from the time of order.  
+Machine Learning techniques like Linear Regression is used to predict the target.  
+The model is trained on a dataset with over 45000 samples.  
 
 It is hosted on AWS using EC2 and ECR, and included steps for the same.
 
@@ -44,6 +44,7 @@ sudo apt-get update -y
 sudo apt-get upgrade
 
 #### required
+```
 curl -fsSL https://get.docker.com -o get-docker.sh
 
 sudo sh get-docker.sh
@@ -51,6 +52,7 @@ sudo sh get-docker.sh
 sudo usermod -aG docker ubuntu
 
 newgrp docker
+```
 
 ### Github runner
 A self hosted runner is configured on the instance
